@@ -33,7 +33,7 @@ else
     key_point = 1:10:71;
 end
 
-%key_point = [1,31,41,55,71];
+key_point = 1:10:71;
 % 
 %l = length(key_point);
 %key_point(l+1) = 55;

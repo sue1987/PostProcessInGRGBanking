@@ -6,8 +6,8 @@
 %  media paramters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-media_length = 120;
-media_width = 60;
+media_length = 203;
+media_width = 76;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   data decomposition and preprocess
