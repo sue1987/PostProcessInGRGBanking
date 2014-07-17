@@ -73,16 +73,16 @@ end
 %time of collision
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % time of collision based on z1
-collision_position_1 = -1;
-collision_happened_1 = false;
-collision_happened_2 = false;
-for i = 1:1:length(time)
-    if(z1(i)>z_baseline)
-        collision_position_1 = i;
-        collision_happened_1 = true;
-        break;
-    end
-end
+% collision_position_1 = -1;
+% collision_happened_1 = false;
+% collision_happened_2 = false;
+% for i = 1:1:length(time)
+%     if(z1(i)>z_baseline)
+%         collision_position_1 = i;
+%         collision_happened_1 = true;
+%         break;
+%     end
+% end
 % time of collision based on force
 collision_position_2 = -1;
 for i = 1:1:length(time)
@@ -94,10 +94,10 @@ for i = 1:1:length(time)
 end
 
 % collision happened or not
-if(collision_happened_1 && collision_happened_2)
+if(collision_happened_2)
     display('**********************collsion parameters*****************************')
     display('collsion happened ');
-    display(['collision_position_1 = ' num2str(collision_position_1 - 1)]);
+    %display(['collision_position_1 = ' num2str(collision_position_1 - 1)]);
     display(['collision_position_2 = ' num2str(collision_position_2 - 1)]);
 else
     display('collsion did not happen ');
@@ -105,18 +105,18 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	collision parameters caculation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if(collision_happened_1 && collision_happened_2)
+if(collision_happened_2)
     
     % angle, force, velocity, x coordinate when collision
-    angle_collision = (angle_1_2(collision_position_1) + angle_1_2(collision_position_2))/2;
+    angle_collision =  angle_1_2(collision_position_2);
     
-    force_collision = max(baseline_force(collision_position_1),baseline_force(collision_position_2));
+    force_collision = baseline_force(collision_position_2);
     
-    point1_x_collision = (x1(collision_position_1) + x1(collision_position_2))/2;
+    point1_x_collision =  x1(collision_position_2);
     
-    velocity_collision_1 = (z1(collision_position_1) - z1(collision_position_1 - 1))/(time(collision_position_1) - time(collision_position_1 - 1));
+    
     velocity_collision_2 = (z1(collision_position_2) - z1(collision_position_2 - 1))/(time(collision_position_2) - time(collision_position_2 - 1));
-    velocity_collsion =  max(velocity_collision_1,velocity_collision_2);
+    velocity_collsion =  velocity_collision_2;
     
 %     acc_collision_1 = (z1(collision_position_1) + z1(collision_position_1 - 2) - 2*z1(collision_position_1 - 1))/0.00001;
 %     acc_collision_2 = (z1(collision_position_2) + z1(collision_position_2 - 2) - 2*z1(collision_position_2 - 1))/0.00001;
